@@ -1,0 +1,11 @@
+language: generic 
+sudo: required
+services:
+   - docker
+
+   before_install:
+     - docker buld -t ruchikong/docker-react -f Dockerfile.dev .
+     - docker run ruchikong/docker-react
+
+  script:
+     - docker run -e CI=true ruchikong/docker-react npm run test
